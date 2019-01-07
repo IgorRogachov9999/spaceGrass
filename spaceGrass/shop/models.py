@@ -24,6 +24,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('category_detail', kwargs={'category_slug': self.slug})
 
 class Grass(models.Model):
     name = models.CharField(max_length=64)
@@ -46,6 +49,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('product_detail', kwargs={'product_slug': self.slug})
 
 class Delivery(models.Model):
     location = models.CharField(max_length=256)

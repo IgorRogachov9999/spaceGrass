@@ -8,7 +8,7 @@
     <h3 class="text-center">{{ product.name }}</h3>
     <p>{{ product.grass.description }}</p>
     <hr>
-    <p><strong>Price: ${{ product.price }}</strong></p>
-    <a href="{% url 'add_to_cart' product_slug=product.slug %}"><button class="btn btn-danger">Купить</button></a>
+    <p><strong>Цена: ${{ product.price }}</strong></p>
+    <a href="#"><button class="btn btn-danger">Купить</button></a>
 </div>
 {% endblock content %}
