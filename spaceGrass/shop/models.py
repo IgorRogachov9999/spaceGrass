@@ -16,7 +16,14 @@ def pre_save_slug(sender, instance, *args, **kwargs):
 
 class ProductManager(models.Manager):
     def all(self, *args, **kwargs):
-        return super(ProductManager, self).get_queryset().filter(available=True)
+        products =  super(ProductManager, self).get_queryset().filter(available=True)
+        res = []
+
+        for product in products:
+            if product.count > 0:
+                res.append(product)
+        
+        return res
 
 class Category(models.Model):
     name = models.CharField(max_length=64)

@@ -47,10 +47,12 @@ def category_view(request, category_slug):
 def order_view(request, product_slug):
     product = Product.objects.get(slug=product_slug)
     form = OrderForm(request.POST or None)
+    categories = Category.objects.all()
 
     context = {
         'form': form,
         'product': product,
+        'categories': categories
     }
 
     return render(request, 'order.html', context)
@@ -59,6 +61,7 @@ def thank_view(request, product_slug):
     form = OrderForm(request.POST or None)
 
     if form.is_valid():
+        categories = Category.objects.all()
         product = Product.objects.get(slug=product_slug)
         if product.count > 0:
             email = form.cleaned_data['email']
@@ -73,11 +76,14 @@ def thank_view(request, product_slug):
             order.product = product
             order.save()
             context = {
-                'ansver': 'Спасибо за покупку!'
+                'ansver': 'Спасибо за покупку!',
+                'categories': categories
+                
             }
         else:
             context = {
-                'ansver': 'Не достаточно товара на складе!'
+                'ansver': 'Не достаточно товара на складе!',
+                'categories': categories
             }
             
         return render(request, 'thank.html', context)

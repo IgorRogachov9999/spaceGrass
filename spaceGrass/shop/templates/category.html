@@ -9,7 +9,7 @@
         <img src="{{ product.grass.image.url }}" alt="" style="width: 80%; height: 200px;">
         <h4 class="text-center"><a href="{{ product.get_absolute_url }}" class='text-center'>{{ product.name }}</a></h4>
         <p>Цена: ${{ product.price }}</p>
-        <a href="{% url 'order_detail' %}" class='text-center'><button class="btn btn-danger">Купить</button></a>
+        <a href="{{ product.get_order_url }}" class='text-center'><button class="btn btn-danger">Купить</button></a>
     </div>
     {% endfor %}
 </div>
