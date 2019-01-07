@@ -44,11 +44,13 @@ def category_view(request, category_slug):
 
     return render(request, 'category.html', context=context)
 
-def order_view(request):
+def order_view(request, product_slug):
+    product = Product.objects.get(slug=product_slug)
     form = OrderForm(request.POST or None)
 
     context = {
-        'form': form
+        'form': form,
+        'product': product,
     }
 
     return render(request, 'order.html', context)
