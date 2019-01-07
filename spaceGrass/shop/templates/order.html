@@ -15,9 +15,10 @@
         <br>
 </div>
 
-<form action="" method="post">
+<form action="{{ product.get_thank_url }}" method="post">
     {{ form|crispy }}
     <input type="submit" class="btn btn-success" value="Купить">
+    {% csrf_token %}
 </form>
 
 {% endblock content %}

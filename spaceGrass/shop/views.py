@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from shop.models import Category, Product
+from shop.models import Category, Product, Order
 from shop.forms import OrderForm
 
 # Create your views here.
@@ -54,3 +54,30 @@ def order_view(request, product_slug):
     }
 
     return render(request, 'order.html', context)
+
+def thank_view(request, product_slug):
+    form = OrderForm(request.POST or None)
+
+    if form.is_valid():
+        product = Product.objects.get(slug=product_slug)
+        if product.count > 0:
+            email = form.cleaned_data['email']
+            delivery = form.cleaned_data['delivery']
+            payment = form.cleaned_data['payment']
+            order = Order()
+            order.email = email
+            order.delivery = delivery
+            order.payment = payment
+            product.count -= 1
+            product.save()
+            order.product = product
+            order.save()
+            context = {
+                'ansver': 'Спасибо за покупку!'
+            }
+        else:
+            context = {
+                'ansver': 'Не достаточно товара на складе!'
+            }
+            
+        return render(request, 'thank.html', context)
