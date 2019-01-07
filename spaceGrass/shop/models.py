@@ -52,9 +52,6 @@ class Product(models.Model):
     
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={'product_slug': self.slug})
-    
-    def get_order_url(self):
-        return reverse('order_detail', kwargs={'product_slug': self.slug})
 
 class Delivery(models.Model):
     location = models.CharField(max_length=256)

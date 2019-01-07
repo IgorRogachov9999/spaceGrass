@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from shop.models import Category, Product
+from shop.forms import OrderForm
 
 # Create your views here.
 
@@ -43,11 +44,11 @@ def category_view(request, category_slug):
 
     return render(request, 'category.html', context=context)
 
-def order_view(request, product_slug):
-    product = Product.objects.get(slug=product_slug)
+def order_view(request):
+    form = OrderForm(request.POST or None)
 
     context = {
-        'product': product
+        'form': form
     }
 
     return render(request, 'order.html', context)
