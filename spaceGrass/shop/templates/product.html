@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class='col-sm-4'>
+    <img src="{{ product.grass.image.url }}" alt="" style="width: 80%; height: 250px;">
+</div>
+<div class='col-sm-8'>
+    <h3 class="text-center">{{ product.name }}</h3>
+    <p>{{ product.grass.description }}</p>
+    <hr>
+    <p><strong>Price: ${{ product.price }}</strong></p>
+    <a href="{% url 'add_to_cart' product_slug=product.slug %}"><button class="btn btn-danger">Купить</button></a>
+</div>
+{% endblock content %}

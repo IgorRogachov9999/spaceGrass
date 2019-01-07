@@ -79,23 +79,27 @@
                             
                             <div class="carousel-inner">
                                 {% for product in products %}
-                                {% if product.first  %}
+                                {% if forloop.first  %}
                                 <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="{{ product.grass.image.url }}" alt="" style="padding-left: 230px; height: 300px; width: 600px;">
+                                    <br>
+                                    <p class="text-center"><a href="#"><button class="btn btn-primary">{{ product.name }}</button></a></p>
                                 </div>
                                 {% else %}
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                        <img class="slide-image" src="{{ product.grass.image.url }}" alt="" style="padding-left: 230px; height: 300px; width: 600px;">
+                                        <br>
+                                        <p class="text-center"><a href="#"><button class="btn btn-primary">{{ product.name }}</button></a></p>
                                 </div>
                                 {% endif %}
                                 {% endfor %}
                             </div>
                             {% if products %}
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" style="background: transparent;">
+                                <span class="glyphicon glyphicon-chevron-left" style="color:black"></span>
                             </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" style="background: transparent;">
+                                <span class="glyphicon glyphicon-chevron-right" style="color:black"></span>
                             </a>
                             {% endif %}
                         </div>
@@ -107,7 +111,7 @@
                     {% for product in products %}
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="{{ product.grass.image.url }}" alt="" style="width: 200px; height: 200px;">
+                            <img src="{{ product.grass.image.url }}" alt="" style="width: 80%; height: 200px;">
                             <div class="caption">
                                 <h4 class="pull-right">${{ product.price }}</h4>
                                 <h4><a href="#">{{ product.name }}</a>

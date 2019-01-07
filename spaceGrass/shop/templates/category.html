@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="col-s`m-12">
+    <h2>{{ category.name }}</h2>
+    <hr>
+    {% for product in products_of_category %}
+    <div class='col-sm-4'>
+        <img src="{{ product.grass.image.url }}" alt="" style="width: 80%; height: 200px;">
+        <h4 class="text-center">{{ product.name }}</h4>
+        <p>Цена: ${{ product.price }}</p>
+        <a href="#" class='text-center'><button class="btn btn-danger">Купить</button></a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
