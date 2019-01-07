@@ -42,3 +42,12 @@ def category_view(request, category_slug):
     }
 
     return render(request, 'category.html', context=context)
+
+def order_view(request, product_slug):
+    product = Product.objects.get(slug=product_slug)
+
+    context = {
+        'product': product
+    }
+
+    return render(request, 'order.html', context)

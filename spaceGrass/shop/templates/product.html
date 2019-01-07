@@ -9,6 +9,6 @@
     <p>{{ product.grass.description }}</p>
     <hr>
     <p><strong>Цена: ${{ product.price }}</strong></p>
-    <a href="#"><button class="btn btn-danger">Купить</button></a>
+    <a href="{{ product.get_order_url }}"><button class="btn btn-danger">Купить</button></a>
 </div>
 {% endblock content %}
