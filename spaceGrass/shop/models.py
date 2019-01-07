@@ -14,7 +14,7 @@ class Grass(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = models.SlugField(blank=True)
     image = models.ImageField()
-    title = models.TextField()
+    description = models.TextField()
 
     def __str__(self):
         return self.name
@@ -33,7 +33,7 @@ class Delivery(models.Model):
     location = models.CharField(max_length=256)
     
     def __str__(self):
-        return self.name
+        return self.location
  
 class Payment(models.Model):
     name = models.CharField(max_length=64)
